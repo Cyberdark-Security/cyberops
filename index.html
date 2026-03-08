@@ -4,473 +4,693 @@
   <meta charset="UTF-8" />
   <title>Examen Cisco CyberOps - 50 Preguntas</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; }
-    h1 { text-align: center; }
-    .pregunta { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
-    .opcion { display: block; margin: 3px 0; }
-    #resultado { margin-top: 20px; padding: 10px; border: 1px solid #333; }
-    button { padding: 10px 20px; font-size: 16px; margin-top: 10px; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 30px 10px;
+      color: #0f172a;
+    }
+
+    .container {
+      background: #f9fafb;
+      max-width: 1000px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow:
+        0 20px 25px -5px rgba(15, 23, 42, 0.4),
+        0 10px 10px -5px rgba(15, 23, 42, 0.3);
+      padding: 24px 28px 30px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .pregunta {
+      margin-bottom: 14px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+    }
+
+    .pregunta strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    .opcion {
+      display: block;
+      margin: 3px 0;
+      font-size: 0.95rem;
+      color: #374151;
+      padding: 4px 6px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .opcion:hover {
+      background-color: #e5f2ff;
+    }
+
+    .opcion input[type="radio"] {
+      margin-right: 6px;
+      accent-color: #2563eb;
+      cursor: pointer;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      justify-content: center;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 22px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #f9fafb;
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 20px -5px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #374151;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-secondary:hover {
+      background: #f3f4f6;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px -4px rgba(55, 65, 81, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    #resultado {
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #ecfdf5;
+      color: #065f46;
+      display: none;
+    }
+
+    #resultado h2 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    #resultado p {
+      margin: 2px 0;
+      font-size: 0.95rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: #e5e7eb;
+      color: #4b5563;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 18px 14px 22px;
+      }
+
+      .pregunta {
+        padding: 8px 9px;
+      }
+
+      body {
+        padding: 16px 8px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Examen Cisco CyberOps</h1>
-  <p>Cada pregunta vale 1 punto. Al final verás cuántas acertaste y tu puntaje total (máximo 50).</p>
+  <div class="container">
+    <h1>Examen Cisco CyberOps</h1>
+    <p class="subtitle">
+      50 preguntas de opción múltiple · Cada pregunta vale 1 punto · Al final verás cuántas acertaste y tu puntaje total.
+    </p>
 
-  <form id="quizForm">
-    <!-- 1 -->
-    <div class="pregunta">
-      <p><strong>1. ¿Cuál es la función principal de un SOC (Security Operations Center)?</strong></p>
-      <label class="opcion"><input type="radio" name="q1" value="a"> Desarrollar aplicaciones web.</label>
-      <label class="opcion"><input type="radio" name="q1" value="b"> Monitorear, detectar y responder a incidentes de seguridad.</label>
-      <label class="opcion"><input type="radio" name="q1" value="c"> Administrar solamente la red inalámbrica.</label>
-      <label class="opcion"><input type="radio" name="q1" value="d"> Gestionar compras de hardware.</label>
-    </div>
+    <form id="quizForm">
+      <!-- 1 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 1</span>
+        <strong>¿Cuál es la función principal de un SOC (Security Operations Center)?</strong>
+        <label class="opcion"><input type="radio" name="q1" value="a"> Desarrollar aplicaciones web.</label>
+        <label class="opcion"><input type="radio" name="q1" value="b"> Monitorear, detectar y responder a incidentes de seguridad.</label>
+        <label class="opcion"><input type="radio" name="q1" value="c"> Administrar solamente la red inalámbrica.</label>
+        <label class="opcion"><input type="radio" name="q1" value="d"> Gestionar compras de hardware.</label>
+      </div>
 
-    <!-- 2 -->
-    <div class="pregunta">
-      <p><strong>2. ¿Qué capa del modelo OSI se asocia principalmente con direcciones IP?</strong></p>
-      <label class="opcion"><input type="radio" name="q2" value="a"> Capa de enlace de datos.</label>
-      <label class="opcion"><input type="radio" name="q2" value="b"> Capa de red.</label>
-      <label class="opcion"><input type="radio" name="q2" value="c"> Capa de transporte.</label>
-      <label class="opcion"><input type="radio" name="q2" value="d"> Capa física.</label>
-    </div>
+      <!-- 2 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 2</span>
+        <strong>¿Qué capa del modelo OSI se asocia principalmente con direcciones IP?</strong>
+        <label class="opcion"><input type="radio" name="q2" value="a"> Capa de enlace de datos.</label>
+        <label class="opcion"><input type="radio" name="q2" value="b"> Capa de red.</label>
+        <label class="opcion"><input type="radio" name="q2" value="c"> Capa de transporte.</label>
+        <label class="opcion"><input type="radio" name="q2" value="d"> Capa física.</label>
+      </div>
 
-    <!-- 3 -->
-    <div class="pregunta">
-      <p><strong>3. ¿Qué tipo de ataque intenta saturar recursos para dejar un servicio inaccesible?</strong></p>
-      <label class="opcion"><input type="radio" name="q3" value="a"> Phishing.</label>
-      <label class="opcion"><input type="radio" name="q3" value="b"> DoS/DDoS.</label>
-      <label class="opcion"><input type="radio" name="q3" value="c"> Ataque de diccionario.</label>
-      <label class="opcion"><input type="radio" name="q3" value="d"> SQL injection.</label>
-    </div>
+      <!-- 3 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 3</span>
+        <strong>¿Qué tipo de ataque intenta saturar recursos para dejar un servicio inaccesible?</strong>
+        <label class="opcion"><input type="radio" name="q3" value="a"> Phishing.</label>
+        <label class="opcion"><input type="radio" name="q3" value="b"> DoS/DDoS.</label>
+        <label class="opcion"><input type="radio" name="q3" value="c"> Ataque de diccionario.</label>
+        <label class="opcion"><input type="radio" name="q3" value="d"> SQL injection.</label>
+      </div>
 
-    <!-- 4 -->
-    <div class="pregunta">
-      <p><strong>4. ¿Qué herramienta se usa comúnmente para captura y análisis de tráfico de red?</strong></p>
-      <label class="opcion"><input type="radio" name="q4" value="a"> Wireshark.</label>
-      <label class="opcion"><input type="radio" name="q4" value="b"> Microsoft Word.</label>
-      <label class="opcion"><input type="radio" name="q4" value="c"> Photoshop.</label>
-      <label class="opcion"><input type="radio" name="q4" value="d"> VLC Player.</label>
-    </div>
+      <!-- 4 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 4</span>
+        <strong>¿Qué herramienta se usa comúnmente para captura y análisis de tráfico de red?</strong>
+        <label class="opcion"><input type="radio" name="q4" value="a"> Wireshark.</label>
+        <label class="opcion"><input type="radio" name="q4" value="b"> Microsoft Word.</label>
+        <label class="opcion"><input type="radio" name="q4" value="c"> Photoshop.</label>
+        <label class="opcion"><input type="radio" name="q4" value="d"> VLC Player.</label>
+      </div>
 
-    <!-- 5 -->
-    <div class="pregunta">
-      <p><strong>5. ¿Qué significa CIA en seguridad de la información?</strong></p>
-      <label class="opcion"><input type="radio" name="q5" value="a"> Control, Integración y Auditoría.</label>
-      <label class="opcion"><input type="radio" name="q5" value="b"> Confidencialidad, Integridad y Disponibilidad.</label>
-      <label class="opcion"><input type="radio" name="q5" value="c"> Comunicación, Internet y Acceso.</label>
-      <label class="opcion"><input type="radio" name="q5" value="d"> Cifrado, Identidad y Autenticación.</label>
-    </div>
+      <!-- 5 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 5</span>
+        <strong>¿Qué significa CIA en seguridad de la información?</strong>
+        <label class="opcion"><input type="radio" name="q5" value="a"> Control, Integración y Auditoría.</label>
+        <label class="opcion"><input type="radio" name="q5" value="b"> Confidencialidad, Integridad y Disponibilidad.</label>
+        <label class="opcion"><input type="radio" name="q5" value="c"> Comunicación, Internet y Acceso.</label>
+        <label class="opcion"><input type="radio" name="q5" value="d"> Cifrado, Identidad y Autenticación.</label>
+      </div>
 
-    <!-- 6 -->
-    <div class="pregunta">
-      <p><strong>6. ¿Qué protocolo usa normalmente el puerto 443?</strong></p>
-      <label class="opcion"><input type="radio" name="q6" value="a"> HTTP.</label>
-      <label class="opcion"><input type="radio" name="q6" value="b"> HTTPS.</label>
-      <label class="opcion"><input type="radio" name="q6" value="c"> FTP.</label>
-      <label class="opcion"><input type="radio" name="q6" value="d"> SSH.</label>
-    </div>
+      <!-- 6 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 6</span>
+        <strong>¿Qué protocolo usa normalmente el puerto 443?</strong>
+        <label class="opcion"><input type="radio" name="q6" value="a"> HTTP.</label>
+        <label class="opcion"><input type="radio" name="q6" value="b"> HTTPS.</label>
+        <label class="opcion"><input type="radio" name="q6" value="c"> FTP.</label>
+        <label class="opcion"><input type="radio" name="q6" value="d"> SSH.</label>
+      </div>
 
-    <!-- 7 -->
-    <div class="pregunta">
-      <p><strong>7. ¿Qué es un IOC (Indicator of Compromise)?</strong></p>
-      <label class="opcion"><input type="radio" name="q7" value="a"> Una herramienta de respaldo.</label>
-      <label class="opcion"><input type="radio" name="q7" value="b"> Evidencia observable que indica posible actividad maliciosa.</label>
-      <label class="opcion"><input type="radio" name="q7" value="c"> Un tipo de firewall.</label>
-      <label class="opcion"><input type="radio" name="q7" value="d"> Un estándar de cifrado.</label>
-    </div>
+      <!-- 7 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 7</span>
+        <strong>¿Qué es un IOC (Indicator of Compromise)?</strong>
+        <label class="opcion"><input type="radio" name="q7" value="a"> Una herramienta de respaldo.</label>
+        <label class="opcion"><input type="radio" name="q7" value="b"> Evidencia observable que indica posible actividad maliciosa.</label>
+        <label class="opcion"><input type="radio" name="q7" value="c"> Un tipo de firewall.</label>
+        <label class="opcion"><input type="radio" name="q7" value="d"> Un estándar de cifrado.</label>
+      </div>
 
-    <!-- 8 -->
-    <div class="pregunta">
-      <p><strong>8. ¿Cuál es el principal objetivo de la gestión de vulnerabilidades?</strong></p>
-      <label class="opcion"><input type="radio" name="q8" value="a"> Crear malware de prueba.</label>
-      <label class="opcion"><input type="radio" name="q8" value="b"> Identificar, evaluar y mitigar debilidades de seguridad.</label>
-      <label class="opcion"><input type="radio" name="q8" value="c"> Hacer copias de seguridad diarias.</label>
-      <label class="opcion"><input type="radio" name="q8" value="d"> Administrar cuentas de usuario.</label>
-    </div>
+      <!-- 8 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 8</span>
+        <strong>¿Cuál es el principal objetivo de la gestión de vulnerabilidades?</strong>
+        <label class="opcion"><input type="radio" name="q8" value="a"> Crear malware de prueba.</label>
+        <label class="opcion"><input type="radio" name="q8" value="b"> Identificar, evaluar y mitigar debilidades de seguridad.</label>
+        <label class="opcion"><input type="radio" name="q8" value="c"> Hacer copias de seguridad diarias.</label>
+        <label class="opcion"><input type="radio" name="q8" value="d"> Administrar cuentas de usuario.</label>
+      </div>
 
-    <!-- 9 -->
-    <div class="pregunta">
-      <p><strong>9. ¿Qué es un firewall de próxima generación (NGFW)?</strong></p>
-      <label class="opcion"><input type="radio" name="q9" value="a"> Un switch de capa 2.</label>
-      <label class="opcion"><input type="radio" name="q9" value="b"> Un firewall que incluye inspección profunda, control de aplicaciones y más.</label>
-      <label class="opcion"><input type="radio" name="q9" value="c"> Un router doméstico básico.</label>
-      <label class="opcion"><input type="radio" name="q9" value="d"> Un servidor web.</label>
-    </div>
+      <!-- 9 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 9</span>
+        <strong>¿Qué es un firewall de próxima generación (NGFW)?</strong>
+        <label class="opcion"><input type="radio" name="q9" value="a"> Un switch de capa 2.</label>
+        <label class="opcion"><input type="radio" name="q9" value="b"> Un firewall que incluye inspección profunda, control de aplicaciones y más.</label>
+        <label class="opcion"><input type="radio" name="q9" value="c"> Un router doméstico básico.</label>
+        <label class="opcion"><input type="radio" name="q9" value="d"> Un servidor web.</label>
+      </div>
 
-    <!-- 10 -->
-    <div class="pregunta">
-      <p><strong>10. ¿Cuál es la finalidad de un IDS (Intrusion Detection System)?</strong></p>
-      <label class="opcion"><input type="radio" name="q10" value="a"> Detectar posibles intrusiones analizando el tráfico.</label>
-      <label class="opcion"><input type="radio" name="q10" value="b"> Reemplazar routers.</label>
-      <label class="opcion"><input type="radio" name="q10" value="c"> Proveer servicios de correo.</label>
-      <label class="opcion"><input type="radio" name="q10" value="d"> Cifrar bases de datos.</label>
-    </div>
+      <!-- 10 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 10</span>
+        <strong>¿Cuál es la finalidad de un IDS (Intrusion Detection System)?</strong>
+        <label class="opcion"><input type="radio" name="q10" value="a"> Detectar posibles intrusiones analizando el tráfico.</label>
+        <label class="opcion"><input type="radio" name="q10" value="b"> Reemplazar routers.</label>
+        <label class="opcion"><input type="radio" name="q10" value="c"> Proveer servicios de correo.</label>
+        <label class="opcion"><input type="radio" name="q10" value="d"> Cifrar bases de datos.</label>
+      </div>
 
-    <!-- 11 -->
-    <div class="pregunta">
-      <p><strong>11. ¿Qué tipo de malware se oculta y modifica el sistema para evitar su detección?</strong></p>
-      <label class="opcion"><input type="radio" name="q11" value="a"> Troyano.</label>
-      <label class="opcion"><input type="radio" name="q11" value="b"> Rootkit.</label>
-      <label class="opcion"><input type="radio" name="q11" value="c"> Gusano.</label>
-      <label class="opcion"><input type="radio" name="q11" value="d"> Spyware.</label>
-    </div>
+      <!-- 11 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 11</span>
+        <strong>¿Qué tipo de malware se oculta y modifica el sistema para evitar su detección?</strong>
+        <label class="opcion"><input type="radio" name="q11" value="a"> Troyano.</label>
+        <label class="opcion"><input type="radio" name="q11" value="b"> Rootkit.</label>
+        <label class="opcion"><input type="radio" name="q11" value="c"> Gusano.</label>
+        <label class="opcion"><input type="radio" name="q11" value="d"> Spyware.</label>
+      </div>
 
-    <!-- 12 -->
-    <div class="pregunta">
-      <p><strong>12. ¿Qué hace típicamente un ataque de phishing?</strong></p>
-      <label class="opcion"><input type="radio" name="q12" value="a"> Intenta obtener credenciales o datos mediante engaño.</label>
-      <label class="opcion"><input type="radio" name="q12" value="b"> Realiza un escaneo de puertos.</label>
-      <label class="opcion"><input type="radio" name="q12" value="c"> Cifra el disco duro.</label>
-      <label class="opcion"><input type="radio" name="q12" value="d"> Borra todos los logs del sistema.</label>
-    </div>
+      <!-- 12 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 12</span>
+        <strong>¿Qué hace típicamente un ataque de phishing?</strong>
+        <label class="opcion"><input type="radio" name="q12" value="a"> Intenta obtener credenciales o datos mediante engaño.</label>
+        <label class="opcion"><input type="radio" name="q12" value="b"> Realiza un escaneo de puertos.</label>
+        <label class="opcion"><input type="radio" name="q12" value="c"> Cifra el disco duro.</label>
+        <label class="opcion"><input type="radio" name="q12" value="d"> Borra todos los logs del sistema.</label>
+      </div>
 
-    <!-- 13 -->
-    <div class="pregunta">
-      <p><strong>13. ¿Cuál es una buena práctica de hardening?</strong></p>
-      <label class="opcion"><input type="radio" name="q13" value="a"> Usar la misma contraseña en todos los sistemas.</label>
-      <label class="opcion"><input type="radio" name="q13" value="b"> Deshabilitar servicios innecesarios.</label>
-      <label class="opcion"><input type="radio" name="q13" value="c"> Compartir credenciales por correo.</label>
-      <label class="opcion"><input type="radio" name="q13" value="d"> Desactivar actualizaciones de seguridad.</label>
-    </div>
+      <!-- 13 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 13</span>
+        <strong>¿Cuál es una buena práctica de hardening?</strong>
+        <label class="opcion"><input type="radio" name="q13" value="a"> Usar la misma contraseña en todos los sistemas.</label>
+        <label class="opcion"><input type="radio" name="q13" value="b"> Deshabilitar servicios innecesarios.</label>
+        <label class="opcion"><input type="radio" name="q13" value="c"> Compartir credenciales por correo.</label>
+        <label class="opcion"><input type="radio" name="q13" value="d"> Desactivar actualizaciones de seguridad.</label>
+      </div>
 
-    <!-- 14 -->
-    <div class="pregunta">
-      <p><strong>14. ¿Qué es la ingeniería social?</strong></p>
-      <label class="opcion"><input type="radio" name="q14" value="a"> Uso de algoritmos de cifrado.</label>
-      <label class="opcion"><input type="radio" name="q14" value="b"> Manipular a las personas para que revelen información o realicen acciones.</label>
-      <label class="opcion"><input type="radio" name="q14" value="c"> Configurar routers.</label>
-      <label class="opcion"><input type="radio" name="q14" value="d"> Desarrollar aplicaciones móviles.</label>
-    </div>
+      <!-- 14 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 14</span>
+        <strong>¿Qué es la ingeniería social?</strong>
+        <label class="opcion"><input type="radio" name="q14" value="a"> Uso de algoritmos de cifrado.</label>
+        <label class="opcion"><input type="radio" name="q14" value="b"> Manipular a las personas para que revelen información o realicen acciones.</label>
+        <label class="opcion"><input type="radio" name="q14" value="c"> Configurar routers.</label>
+        <label class="opcion"><input type="radio" name="q14" value="d"> Desarrollar aplicaciones móviles.</label>
+      </div>
 
-    <!-- 15 -->
-    <div class="pregunta">
-      <p><strong>15. ¿Qué significa “least privilege” (mínimo privilegio)?</strong></p>
-      <label class="opcion"><input type="radio" name="q15" value="a"> Dar a todo el mundo acceso total.</label>
-      <label class="opcion"><input type="radio" name="q15" value="b"> Dar solo los permisos estrictamente necesarios para una tarea.</label>
-      <label class="opcion"><input type="radio" name="q15" value="c"> Quitar todo acceso a todos los usuarios.</label>
-      <label class="opcion"><input type="radio" name="q15" value="d"> Permitir privilegios máximos por defecto.</label>
-    </div>
+      <!-- 15 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 15</span>
+        <strong>¿Qué significa “least privilege” (mínimo privilegio)?</strong>
+        <label class="opcion"><input type="radio" name="q15" value="a"> Dar a todo el mundo acceso total.</label>
+        <label class="opcion"><input type="radio" name="q15" value="b"> Dar solo los permisos estrictamente necesarios para una tarea.</label>
+        <label class="opcion"><input type="radio" name="q15" value="c"> Quitar todo acceso a todos los usuarios.</label>
+        <label class="opcion"><input type="radio" name="q15" value="d"> Permitir privilegios máximos por defecto.</label>
+      </div>
 
-    <!-- 16 -->
-    <div class="pregunta">
-      <p><strong>16. ¿Qué registro es clave para investigar actividad en un sistema Windows?</strong></p>
-      <label class="opcion"><input type="radio" name="q16" value="a"> Event Viewer (Visor de eventos).</label>
-      <label class="opcion"><input type="radio" name="q16" value="b"> Bloc de notas.</label>
-      <label class="opcion"><input type="radio" name="q16" value="c"> Calculadora.</label>
-      <label class="opcion"><input type="radio" name="q16" value="d"> Panel de control de sonido.</label>
-    </div>
+      <!-- 16 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 16</span>
+        <strong>¿Qué registro es clave para investigar actividad en un sistema Windows?</strong>
+        <label class="opcion"><input type="radio" name="q16" value="a"> Event Viewer (Visor de eventos).</label>
+        <label class="opcion"><input type="radio" name="q16" value="b"> Bloc de notas.</label>
+        <label class="opcion"><input type="radio" name="q16" value="c"> Calculadora.</label>
+        <label class="opcion"><input type="radio" name="q16" value="d"> Panel de control de sonido.</label>
+      </div>
 
-    <!-- 17 -->
-    <div class="pregunta">
-      <p><strong>17. ¿Qué tipo de análisis realiza un antivirus en tiempo real?</strong></p>
-      <label class="opcion"><input type="radio" name="q17" value="a"> Análisis de comportamiento y firmas mientras se ejecutan archivos.</label>
-      <label class="opcion"><input type="radio" name="q17" value="b"> Solo análisis manual.</label>
-      <label class="opcion"><input type="radio" name="q17" value="c"> Análisis de tráfico de red inalámbrica.</label>
-      <label class="opcion"><input type="radio" name="q17" value="d"> Ninguno, solo reportes.</label>
-    </div>
+      <!-- 17 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 17</span>
+        <strong>¿Qué tipo de análisis realiza un antivirus en tiempo real?</strong>
+        <label class="opcion"><input type="radio" name="q17" value="a"> Análisis de comportamiento y firmas mientras se ejecutan archivos.</label>
+        <label class="opcion"><input type="radio" name="q17" value="b"> Solo análisis manual.</label>
+        <label class="opcion"><input type="radio" name="q17" value="c"> Análisis de tráfico de red inalámbrica.</label>
+        <label class="opcion"><input type="radio" name="q17" value="d"> Ninguno, solo reportes.</label>
+      </div>
 
-    <!-- 18 -->
-    <div class="pregunta">
-      <p><strong>18. ¿Qué significa que un ataque sea “persistente” (APT)?</strong></p>
-      <label class="opcion"><input type="radio" name="q18" value="a"> Que dura poco tiempo.</label>
-      <label class="opcion"><input type="radio" name="q18" value="b"> Que el atacante mantiene acceso prolongado y sigiloso a la red.</label>
-      <label class="opcion"><input type="radio" name="q18" value="c"> Que solo afecta a un equipo.</label>
-      <label class="opcion"><input type="radio" name="q18" value="d"> Que es un ataque físico.</label>
-    </div>
+      <!-- 18 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 18</span>
+        <strong>¿Qué significa que un ataque sea “persistente” (APT)?</strong>
+        <label class="opcion"><input type="radio" name="q18" value="a"> Que dura poco tiempo.</label>
+        <label class="opcion"><input type="radio" name="q18" value="b"> Que el atacante mantiene acceso prolongado y sigiloso a la red.</label>
+        <label class="opcion"><input type="radio" name="q18" value="c"> Que solo afecta a un equipo.</label>
+        <label class="opcion"><input type="radio" name="q18" value="d"> Que es un ataque físico.</label>
+      </div>
 
-    <!-- 19 -->
-    <div class="pregunta">
-      <p><strong>19. ¿Qué herramienta de Cisco se usa para análisis y correlación de eventos de seguridad?</strong></p>
-      <label class="opcion"><input type="radio" name="q19" value="a"> Cisco Packet Tracer.</label>
-      <label class="opcion"><input type="radio" name="q19" value="b"> Cisco SecureX (o soluciones SIEM/SOAR similares).</label>
-      <label class="opcion"><input type="radio" name="q19" value="c"> Cisco Webex.</label>
-      <label class="opcion"><input type="radio" name="q19" value="d"> Cisco AnyConnect.</label>
-    </div>
+      <!-- 19 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 19</span>
+        <strong>¿Qué herramienta de Cisco se usa para análisis y correlación de eventos de seguridad?</strong>
+        <label class="opcion"><input type="radio" name="q19" value="a"> Cisco Packet Tracer.</label>
+        <label class="opcion"><input type="radio" name="q19" value="b"> Cisco SecureX (o soluciones SIEM/SOAR similares).</label>
+        <label class="opcion"><input type="radio" name="q19" value="c"> Cisco Webex.</label>
+        <label class="opcion"><input type="radio" name="q19" value="d"> Cisco AnyConnect.</label>
+      </div>
 
-    <!-- 20 -->
-    <div class="pregunta">
-      <p><strong>20. ¿Qué tipo de registro se genera en un dispositivo de red para eventos importantes?</strong></p>
-      <label class="opcion"><input type="radio" name="q20" value="a"> Syslog.</label>
-      <label class="opcion"><input type="radio" name="q20" value="b"> PDF.</label>
-      <label class="opcion"><input type="radio" name="q20" value="c"> Archivo de imagen.</label>
-      <label class="opcion"><input type="radio" name="q20" value="d"> Archivo de audio.</label>
-    </div>
+      <!-- 20 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 20</span>
+        <strong>¿Qué tipo de registro se genera en un dispositivo de red para eventos importantes?</strong>
+        <label class="opcion"><input type="radio" name="q20" value="a"> Syslog.</label>
+        <label class="opcion"><input type="radio" name="q20" value="b"> PDF.</label>
+        <label class="opcion"><input type="radio" name="q20" value="c"> Archivo de imagen.</label>
+        <label class="opcion"><input type="radio" name="q20" value="d"> Archivo de audio.</label>
+      </div>
 
-    <!-- 21 -->
-    <div class="pregunta">
-      <p><strong>21. ¿Qué describe mejor un “false positive” en seguridad?</strong></p>
-      <label class="opcion"><input type="radio" name="q21" value="a"> Un ataque real que no es detectado.</label>
-      <label class="opcion"><input type="radio" name="q21" value="b"> Una alerta que indica amenaza pero en realidad es actividad legítima.</label>
-      <label class="opcion"><input type="radio" name="q21" value="c"> Un archivo limpio marcado como seguro.</label>
-      <label class="opcion"><input type="radio" name="q21" value="d"> Un error de hardware.</label>
-    </div>
+      <!-- 21 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 21</span>
+        <strong>¿Qué describe mejor un “false positive” en seguridad?</strong>
+        <label class="opcion"><input type="radio" name="q21" value="a"> Un ataque real que no es detectado.</label>
+        <label class="opcion"><input type="radio" name="q21" value="b"> Una alerta que indica amenaza pero en realidad es actividad legítima.</label>
+        <label class="opcion"><input type="radio" name="q21" value="c"> Un archivo limpio marcado como seguro.</label>
+        <label class="opcion"><input type="radio" name="q21" value="d"> Un error de hardware.</label>
+      </div>
 
-    <!-- 22 -->
-    <div class="pregunta">
-      <p><strong>22. ¿Qué protocolo se usa típicamente para administrar dispositivos de red de forma segura?</strong></p>
-      <label class="opcion"><input type="radio" name="q22" value="a"> Telnet.</label>
-      <label class="opcion"><input type="radio" name="q22" value="b"> SSH.</label>
-      <label class="opcion"><input type="radio" name="q22" value="c"> HTTP.</label>
-      <label class="opcion"><input type="radio" name="q22" value="d"> TFTP.</label>
-    </div>
+      <!-- 22 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 22</span>
+        <strong>¿Qué protocolo se usa típicamente para administrar dispositivos de red de forma segura?</strong>
+        <label class="opcion"><input type="radio" name="q22" value="a"> Telnet.</label>
+        <label class="opcion"><input type="radio" name="q22" value="b"> SSH.</label>
+        <label class="opcion"><input type="radio" name="q22" value="c"> HTTP.</label>
+        <label class="opcion"><input type="radio" name="q22" value="d"> TFTP.</label>
+      </div>
 
-    <!-- 23 -->
-    <div class="pregunta">
-      <p><strong>23. ¿Qué componente almacena normalmente las reglas de acceso en un firewall?</strong></p>
-      <label class="opcion"><input type="radio" name="q23" value="a"> ACL o política de firewall.</label>
-      <label class="opcion"><input type="radio" name="q23" value="b"> Archivo de audio.</label>
-      <label class="opcion"><input type="radio" name="q23" value="c"> Historial del navegador.</label>
-      <label class="opcion"><input type="radio" name="q23" value="d"> Archivo de imagen.</label>
-    </div>
+      <!-- 23 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 23</span>
+        <strong>¿Qué componente almacena normalmente las reglas de acceso en un firewall?</strong>
+        <label class="opcion"><input type="radio" name="q23" value="a"> ACL o política de firewall.</label>
+        <label class="opcion"><input type="radio" name="q23" value="b"> Archivo de audio.</label>
+        <label class="opcion"><input type="radio" name="q23" value="c"> Historial del navegador.</label>
+        <label class="opcion"><input type="radio" name="q23" value="d"> Archivo de imagen.</label>
+      </div>
 
-    <!-- 24 -->
-    <div class="pregunta">
-      <p><strong>24. ¿Qué es segmentación de red?</strong></p>
-      <label class="opcion"><input type="radio" name="q24" value="a"> Unir todas las redes en una sola.</label>
-      <label class="opcion"><input type="radio" name="q24" value="b"> Dividir la red en partes más pequeñas para mejorar seguridad y control.</label>
-      <label class="opcion"><input type="radio" name="q24" value="c"> Apagar todos los switches.</label>
-      <label class="opcion"><input type="radio" name="q24" value="d"> Solo usar WiFi.</label>
-    </div>
+      <!-- 24 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 24</span>
+        <strong>¿Qué es segmentación de red?</strong>
+        <label class="opcion"><input type="radio" name="q24" value="a"> Unir todas las redes en una sola.</label>
+        <label class="opcion"><input type="radio" name="q24" value="b"> Dividir la red en partes más pequeñas para mejorar seguridad y control.</label>
+        <label class="opcion"><input type="radio" name="q24" value="c"> Apagar todos los switches.</label>
+        <label class="opcion"><input type="radio" name="q24" value="d"> Solo usar WiFi.</label>
+      </div>
 
-    <!-- 25 -->
-    <div class="pregunta">
-      <p><strong>25. ¿Qué es un honeypot?</strong></p>
-      <label class="opcion"><input type="radio" name="q25" value="a"> Un sistema diseñado para atraer atacantes y estudiar su comportamiento.</label>
-      <label class="opcion"><input type="radio" name="q25" value="b"> Un sistema de respaldo.</label>
-      <label class="opcion"><input type="radio" name="q25" value="c"> Un tipo de router.</label>
-      <label class="opcion"><input type="radio" name="q25" value="d"> Un servidor de impresión.</label>
-    </div>
+      <!-- 25 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 25</span>
+        <strong>¿Qué es un honeypot?</strong>
+        <label class="opcion"><input type="radio" name="q25" value="a"> Un sistema diseñado para atraer atacantes y estudiar su comportamiento.</label>
+        <label class="opcion"><input type="radio" name="q25" value="b"> Un sistema de respaldo.</label>
+        <label class="opcion"><input type="radio" name="q25" value="c"> Un tipo de router.</label>
+        <label class="opcion"><input type="radio" name="q25" value="d"> Un servidor de impresión.</label>
+      </div>
 
-    <!-- 26 -->
-    <div class="pregunta">
-      <p><strong>26. ¿Qué es un playbook en un SOC?</strong></p>
-      <label class="opcion"><input type="radio" name="q26" value="a"> Lista aleatoria de comandos.</label>
-      <label class="opcion"><input type="radio" name="q26" value="b"> Conjunto documentado de pasos para responder a un tipo de incidente.</label>
-      <label class="opcion"><input type="radio" name="q26" value="c"> Plan de marketing.</label>
-      <label class="opcion"><input type="radio" name="q26" value="d"> Guía de usuario de Windows.</label>
-    </div>
+      <!-- 26 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 26</span>
+        <strong>¿Qué es un playbook en un SOC?</strong>
+        <label class="opcion"><input type="radio" name="q26" value="a"> Lista aleatoria de comandos.</label>
+        <label class="opcion"><input type="radio" name="q26" value="b"> Conjunto documentado de pasos para responder a un tipo de incidente.</label>
+        <label class="opcion"><input type="radio" name="q26" value="c"> Plan de marketing.</label>
+        <label class="opcion"><input type="radio" name="q26" value="d"> Guía de usuario de Windows.</label>
+      </div>
 
-    <!-- 27 -->
-    <div class="pregunta">
-      <p><strong>27. ¿Qué tipo de ataque aprovecha entradas no validadas en formularios web?</strong></p>
-      <label class="opcion"><input type="radio" name="q27" value="a"> SQL injection.</label>
-      <label class="opcion"><input type="radio" name="q27" value="b"> Shoulder surfing.</label>
-      <label class="opcion"><input type="radio" name="q27" value="c"> Eavesdropping.</label>
-      <label class="opcion"><input type="radio" name="q27" value="d"> Tailgating.</label>
-    </div>
+      <!-- 27 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 27</span>
+        <strong>¿Qué tipo de ataque aprovecha entradas no validadas en formularios web?</strong>
+        <label class="opcion"><input type="radio" name="q27" value="a"> SQL injection.</label>
+        <label class="opcion"><input type="radio" name="q27" value="b"> Shoulder surfing.</label>
+        <label class="opcion"><input type="radio" name="q27" value="c"> Eavesdropping.</label>
+        <label class="opcion"><input type="radio" name="q27" value="d"> Tailgating.</label>
+      </div>
 
-    <!-- 28 -->
-    <div class="pregunta">
-      <p><strong>28. ¿Qué significa “defense in depth”?</strong></p>
-      <label class="opcion"><input type="radio" name="q28" value="a"> Usar un solo firewall muy potente.</label>
-      <label class="opcion"><input type="radio" name="q28" value="b"> Implementar múltiples capas de controles de seguridad.</label>
-      <label class="opcion"><input type="radio" name="q28" value="c"> Desactivar todos los antivirus.</label>
-      <label class="opcion"><input type="radio" name="q28" value="d"> Restringir solo el acceso físico.</label>
-    </div>
+      <!-- 28 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 28</span>
+        <strong>¿Qué significa “defense in depth”?</strong>
+        <label class="opcion"><input type="radio" name="q28" value="a"> Usar un solo firewall muy potente.</label>
+        <label class="opcion"><input type="radio" name="q28" value="b"> Implementar múltiples capas de controles de seguridad.</label>
+        <label class="opcion"><input type="radio" name="q28" value="c"> Desactivar todos los antivirus.</label>
+        <label class="opcion"><input type="radio" name="q28" value="d"> Restringir solo el acceso físico.</label>
+      </div>
 
-    <!-- 29 -->
-    <div class="pregunta">
-      <p><strong>29. ¿Qué es un ataque de fuerza bruta?</strong></p>
-      <label class="opcion"><input type="radio" name="q29" value="a"> Intentar todas las combinaciones posibles de contraseña.</label>
-      <label class="opcion"><input type="radio" name="q29" value="b"> Escanear puertos.</label>
-      <label class="opcion"><input type="radio" name="q29" value="c"> Suplantar direcciones IP.</label>
-      <label class="opcion"><input type="radio" name="q29" value="d"> Inundar la red con tráfico.</label>
-    </div>
+      <!-- 29 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 29</span>
+        <strong>¿Qué es un ataque de fuerza bruta?</strong>
+        <label class="opcion"><input type="radio" name="q29" value="a"> Intentar todas las combinaciones posibles de contraseña.</label>
+        <label class="opcion"><input type="radio" name="q29" value="b"> Escanear puertos.</label>
+        <label class="opcion"><input type="radio" name="q29" value="c"> Suplantar direcciones IP.</label>
+        <label class="opcion"><input type="radio" name="q29" value="d"> Inundar la red con tráfico.</label>
+      </div>
 
-    <!-- 30 -->
-    <div class="pregunta">
-      <p><strong>30. ¿Qué herramienta permite ver rutas que siguen los paquetes en la red?</strong></p>
-      <label class="opcion"><input type="radio" name="q30" value="a"> ping.</label>
-      <label class="opcion"><input type="radio" name="q30" value="b"> traceroute/tracert.</label>
-      <label class="opcion"><input type="radio" name="q30" value="c"> nslookup.</label>
-      <label class="opcion"><input type="radio" name="q30" value="d"> ipconfig/ifconfig.</label>
-    </div>
+      <!-- 30 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 30</span>
+        <strong>¿Qué herramienta permite ver rutas que siguen los paquetes en la red?</strong>
+        <label class="opcion"><input type="radio" name="q30" value="a"> ping.</label>
+        <label class="opcion"><input type="radio" name="q30" value="b"> traceroute/tracert.</label>
+        <label class="opcion"><input type="radio" name="q30" value="c"> nslookup.</label>
+        <label class="opcion"><input type="radio" name="q30" value="d"> ipconfig/ifconfig.</label>
+      </div>
 
-    <!-- 31 -->
-    <div class="pregunta">
-      <p><strong>31. ¿Qué técnica ayuda a asegurar que un archivo no ha sido modificado?</strong></p>
-      <label class="opcion"><input type="radio" name="q31" value="a"> Cambio de nombre.</label>
-      <label class="opcion"><input type="radio" name="q31" value="b"> Verificación de hash.</label>
-      <label class="opcion"><input type="radio" name="q31" value="c"> Copiar el archivo.</label>
-      <label class="opcion"><input type="radio" name="q31" value="d"> Comprimir el archivo.</label>
-    </div>
+      <!-- 31 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 31</span>
+        <strong>¿Qué técnica ayuda a asegurar que un archivo no ha sido modificado?</strong>
+        <label class="opcion"><input type="radio" name="q31" value="a"> Cambio de nombre.</label>
+        <label class="opcion"><input type="radio" name="q31" value="b"> Verificación de hash.</label>
+        <label class="opcion"><input type="radio" name="q31" value="c"> Copiar el archivo.</label>
+        <label class="opcion"><input type="radio" name="q31" value="d"> Comprimir el archivo.</label>
+      </div>
 
-    <!-- 32 -->
-    <div class="pregunta">
-      <p><strong>32. ¿Qué es un SIEM?</strong></p>
-      <label class="opcion"><input type="radio" name="q32" value="a"> Sistema de impresión.</label>
-      <label class="opcion"><input type="radio" name="q32" value="b"> Sistema que centraliza, correlaciona y analiza logs de seguridad.</label>
-      <label class="opcion"><input type="radio" name="q32" value="c"> Antivirus básico.</label>
-      <label class="opcion"><input type="radio" name="q32" value="d"> Un firewall doméstico.</label>
-    </div>
+      <!-- 32 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 32</span>
+        <strong>¿Qué es un SIEM?</strong>
+        <label class="opcion"><input type="radio" name="q32" value="a"> Sistema de impresión.</label>
+        <label class="opcion"><input type="radio" name="q32" value="b"> Sistema que centraliza, correlaciona y analiza logs de seguridad.</label>
+        <label class="opcion"><input type="radio" name="q32" value="c"> Antivirus básico.</label>
+        <label class="opcion"><input type="radio" name="q32" value="d"> Un firewall doméstico.</label>
+      </div>
 
-    <!-- 33 -->
-    <div class="pregunta">
-      <p><strong>33. ¿Qué describe mejor la fase de contención en respuesta a incidentes?</strong></p>
-      <label class="opcion"><input type="radio" name="q33" value="a"> Eliminar todas las copias de seguridad.</label>
-      <label class="opcion"><input type="radio" name="q33" value="b"> Limitar la propagación del incidente sin erradicarlo aún.</label>
-      <label class="opcion"><input type="radio" name="q33" value="c"> Ignorar el problema.</label>
-      <label class="opcion"><input type="radio" name="q33" value="d"> Comprar más equipos.</label>
-    </div>
+      <!-- 33 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 33</span>
+        <strong>¿Qué describe mejor la fase de contención en respuesta a incidentes?</strong>
+        <label class="opcion"><input type="radio" name="q33" value="a"> Eliminar todas las copias de seguridad.</label>
+        <label class="opcion"><input type="radio" name="q33" value="b"> Limitar la propagación del incidente sin erradicarlo aún.</label>
+        <label class="opcion"><input type="radio" name="q33" value="c"> Ignorar el problema.</label>
+        <label class="opcion"><input type="radio" name="q33" value="d"> Comprar más equipos.</label>
+      </div>
 
-    <!-- 34 -->
-    <div class="pregunta">
-      <p><strong>34. ¿Cuál es un objetivo del análisis forense digital?</strong></p>
-      <label class="opcion"><input type="radio" name="q34" value="a"> Modificar evidencias.</label>
-      <label class="opcion"><input type="radio" name="q34" value="b"> Preservar, analizar y documentar evidencias digitales.</label>
-      <label class="opcion"><input type="radio" name="q34" value="c"> Borrar registros.</label>
-      <label class="opcion"><input type="radio" name="q34" value="d"> Crear malware.</label>
-    </div>
+      <!-- 34 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 34</span>
+        <strong>¿Cuál es un objetivo del análisis forense digital?</strong>
+        <label class="opcion"><input type="radio" name="q34" value="a"> Modificar evidencias.</label>
+        <label class="opcion"><input type="radio" name="q34" value="b"> Preservar, analizar y documentar evidencias digitales.</label>
+        <label class="opcion"><input type="radio" name="q34" value="c"> Borrar registros.</label>
+        <label class="opcion"><input type="radio" name="q34" value="d"> Crear malware.</label>
+      </div>
 
-    <!-- 35 -->
-    <div class="pregunta">
-      <p><strong>35. ¿Qué se busca en la etapa de erradicación de un incidente?</strong></p>
-      <label class="opcion"><input type="radio" name="q35" value="a"> Ocultar el incidente.</label>
-      <label class="opcion"><input type="radio" name="q35" value="b"> Eliminar por completo la causa raíz y artefactos maliciosos.</label>
-      <label class="opcion"><input type="radio" name="q35" value="c"> Generar más logs.</label>
-      <label class="opcion"><input type="radio" name="q35" value="d"> Aumentar el ancho de banda.</label>
-    </div>
+      <!-- 35 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 35</span>
+        <strong>¿Qué se busca en la etapa de erradicación de un incidente?</strong>
+        <label class="opcion"><input type="radio" name="q35" value="a"> Ocultar el incidente.</label>
+        <label class="opcion"><input type="radio" name="q35" value="b"> Eliminar por completo la causa raíz y artefactos maliciosos.</label>
+        <label class="opcion"><input type="radio" name="q35" value="c"> Generar más logs.</label>
+        <label class="opcion"><input type="radio" name="q35" value="d"> Aumentar el ancho de banda.</label>
+      </div>
 
-    <!-- 36 -->
-    <div class="pregunta">
-      <p><strong>36. ¿Qué ventaja aporta la autenticación multifactor (MFA)?</strong></p>
-      <label class="opcion"><input type="radio" name="q36" value="a"> Menos seguridad.</label>
-      <label class="opcion"><input type="radio" name="q36" value="b"> Requiere más de un factor, dificultando el acceso no autorizado.</label>
-      <label class="opcion"><input type="radio" name="q36" value="c"> Solo funciona en redes locales.</label>
-      <label class="opcion"><input type="radio" name="q36" value="d"> No tiene impacto en seguridad.</label>
-    </div>
+      <!-- 36 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 36</span>
+        <strong>¿Qué ventaja aporta la autenticación multifactor (MFA)?</strong>
+        <label class="opcion"><input type="radio" name="q36" value="a"> Menos seguridad.</label>
+        <label class="opcion"><input type="radio" name="q36" value="b"> Requiere más de un factor, dificultando el acceso no autorizado.</label>
+        <label class="opcion"><input type="radio" name="q36" value="c"> Solo funciona en redes locales.</label>
+        <label class="opcion"><input type="radio" name="q36" value="d"> No tiene impacto en seguridad.</label>
+      </div>
 
-    <!-- 37 -->
-    <div class="pregunta">
-      <p><strong>37. ¿Cuál es una señal común de compromiso en un host?</strong></p>
-      <label class="opcion"><input type="radio" name="q37" value="a"> Rendimiento normal.</label>
-      <label class="opcion"><input type="radio" name="q37" value="b"> Procesos desconocidos consumiendo muchos recursos.</label>
-      <label class="opcion"><input type="radio" name="q37" value="c"> Sistema recién instalado.</label>
-      <label class="opcion"><input type="radio" name="q37" value="d"> antivirus actualizado.</label>
-    </div>
+      <!-- 37 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 37</span>
+        <strong>¿Cuál es una señal común de compromiso en un host?</strong>
+        <label class="opcion"><input type="radio" name="q37" value="a"> Rendimiento normal.</label>
+        <label class="opcion"><input type="radio" name="q37" value="b"> Procesos desconocidos consumiendo muchos recursos.</label>
+        <label class="opcion"><input type="radio" name="q37" value="c"> Sistema recién instalado.</label>
+        <label class="opcion"><input type="radio" name="q37" value="d"> Antivirus actualizado.</label>
+      </div>
 
-    <!-- 38 -->
-    <div class="pregunta">
-      <p><strong>38. ¿Qué es un “zero-day”?</strong></p>
-      <label class="opcion"><input type="radio" name="q38" value="a"> Vulnerabilidad ya parcheada.</label>
-      <label class="opcion"><input type="radio" name="q38" value="b"> Vulnerabilidad desconocida para el proveedor, sin parche disponible.</label>
-      <label class="opcion"><input type="radio" name="q38" value="c"> Error de usuario.</label>
-      <label class="opcion"><input type="radio" name="q38" value="d"> Ataque de diccionario.</label>
-    </div>
+      <!-- 38 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 38</span>
+        <strong>¿Qué es un “zero-day”?</strong>
+        <label class="opcion"><input type="radio" name="q38" value="a"> Vulnerabilidad ya parcheada.</label>
+        <label class="opcion"><input type="radio" name="q38" value="b"> Vulnerabilidad desconocida para el proveedor, sin parche disponible.</label>
+        <label class="opcion"><input type="radio" name="q38" value="c"> Error de usuario.</label>
+        <label class="opcion"><input type="radio" name="q38" value="d"> Ataque de diccionario.</label>
+      </div>
 
-    <!-- 39 -->
-    <div class="pregunta">
-      <p><strong>39. ¿Qué comando en sistemas Linux muestra conexiones de red y puertos en uso?</strong></p>
-      <label class="opcion"><input type="radio" name="q39" value="a"> ls.</label>
-      <label class="opcion"><input type="radio" name="q39" value="b"> netstat o ss.</label>
-      <label class="opcion"><input type="radio" name="q39" value="c"> cd.</label>
-      <label class="opcion"><input type="radio" name="q39" value="d"> pwd.</label>
-    </div>
+      <!-- 39 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 39</span>
+        <strong>¿Qué comando en sistemas Linux muestra conexiones de red y puertos en uso?</strong>
+        <label class="opcion"><input type="radio" name="q39" value="a"> ls.</label>
+        <label class="opcion"><input type="radio" name="q39" value="b"> netstat o ss.</label>
+        <label class="opcion"><input type="radio" name="q39" value="c"> cd.</label>
+        <label class="opcion"><input type="radio" name="q39" value="d"> pwd.</label>
+      </div>
 
-    <!-- 40 -->
-    <div class="pregunta">
-      <p><strong>40. ¿Qué es un “baseline” de seguridad?</strong></p>
-      <label class="opcion"><input type="radio" name="q40" value="a"> Estado esperado y normal del sistema o red.</label>
-      <label class="opcion"><input type="radio" name="q40" value="b"> Copia de seguridad.</label>
-      <label class="opcion"><input type="radio" name="q40" value="c"> Ataque de red.</label>
-      <label class="opcion"><input type="radio" name="q40" value="d"> Actualización de firmware.</label>
-    </div>
+      <!-- 40 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 40</span>
+        <strong>¿Qué es un “baseline” de seguridad?</strong>
+        <label class="opcion"><input type="radio" name="q40" value="a"> Estado esperado y normal del sistema o red.</label>
+        <label class="opcion"><input type="radio" name="q40" value="b"> Copia de seguridad.</label>
+        <label class="opcion"><input type="radio" name="q40" value="c"> Ataque de red.</label>
+        <label class="opcion"><input type="radio" name="q40" value="d"> Actualización de firmware.</label>
+      </div>
 
-    <!-- 41 -->
-    <div class="pregunta">
-      <p><strong>41. ¿Qué describe mejor el principio de “need to know”?</strong></p>
-      <label class="opcion"><input type="radio" name="q41" value="a"> Todos deben conocer toda la información.</label>
-      <label class="opcion"><input type="radio" name="q41" value="b"> Los usuarios solo acceden a la información necesaria para su función.</label>
-      <label class="opcion"><input type="radio" name="q41" value="c"> Nadie puede acceder a nada.</label>
-      <label class="opcion"><input type="radio" name="q41" value="d"> Solo el administrador tiene acceso.</label>
-    </div>
+      <!-- 41 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 41</span>
+        <strong>¿Qué describe mejor el principio de “need to know”?</strong>
+        <label class="opcion"><input type="radio" name="q41" value="a"> Todos deben conocer toda la información.</label>
+        <label class="opcion"><input type="radio" name="q41" value="b"> Los usuarios solo acceden a la información necesaria para su función.</label>
+        <label class="opcion"><input type="radio" name="q41" value="c"> Nadie puede acceder a nada.</label>
+        <label class="opcion"><input type="radio" name="q41" value="d"> Solo el administrador tiene acceso.</label>
+      </div>
 
-    <!-- 42 -->
-    <div class="pregunta">
-      <p><strong>42. ¿Qué capa del modelo OSI se relaciona con TCP y UDP?</strong></p>
-      <label class="opcion"><input type="radio" name="q42" value="a"> Capa física.</label>
-      <label class="opcion"><input type="radio" name="q42" value="b"> Capa de transporte.</label>
-      <label class="opcion"><input type="radio" name="q42" value="c"> Capa de sesión.</label>
-      <label class="opcion"><input type="radio" name="q42" value="d"> Capa de aplicación.</label>
-    </div>
+      <!-- 42 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 42</span>
+        <strong>¿Qué capa del modelo OSI se relaciona con TCP y UDP?</strong>
+        <label class="opcion"><input type="radio" name="q42" value="a"> Capa física.</label>
+        <label class="opcion"><input type="radio" name="q42" value="b"> Capa de transporte.</label>
+        <label class="opcion"><input type="radio" name="q42" value="c"> Capa de sesión.</label>
+        <label class="opcion"><input type="radio" name="q42" value="d"> Capa de aplicación.</label>
+      </div>
 
-    <!-- 43 -->
-    <div class="pregunta">
-      <p><strong>43. ¿Qué tipo de malware cifra los datos de la víctima y pide rescate?</strong></p>
-      <label class="opcion"><input type="radio" name="q43" value="a"> Gusano.</label>
-      <label class="opcion"><input type="radio" name="q43" value="b"> Ransomware.</label>
-      <label class="opcion"><input type="radio" name="q43" value="c"> Adware.</label>
-      <label class="opcion"><input type="radio" name="q43" value="d"> Rootkit.</label>
-    </div>
+      <!-- 43 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 43</span>
+        <strong>¿Qué tipo de malware cifra los datos de la víctima y pide rescate?</strong>
+        <label class="opcion"><input type="radio" name="q43" value="a"> Gusano.</label>
+        <label class="opcion"><input type="radio" name="q43" value="b"> Ransomware.</label>
+        <label class="opcion"><input type="radio" name="q43" value="c"> Adware.</label>
+        <label class="opcion"><input type="radio" name="q43" value="d"> Rootkit.</label>
+      </div>
 
-    <!-- 44 -->
-    <div class="pregunta">
-      <p><strong>44. ¿Qué es la exfiltración de datos?</strong></p>
-      <label class="opcion"><input type="radio" name="q44" value="a"> Eliminación de archivos temporales.</label>
-      <label class="opcion"><input type="radio" name="q44" value="b"> Extracción no autorizada de datos fuera de la organización.</label>
-      <label class="opcion"><input type="radio" name="q44" value="c"> Cifrado local de datos.</label>
-      <label class="opcion"><input type="radio" name="q44" value="d"> Copia de seguridad interna.</label>
-    </div>
+      <!-- 44 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 44</span>
+        <strong>¿Qué es la exfiltración de datos?</strong>
+        <label class="opcion"><input type="radio" name="q44" value="a"> Eliminación de archivos temporales.</label>
+        <label class="opcion"><input type="radio" name="q44" value="b"> Extracción no autorizada de datos fuera de la organización.</label>
+        <label class="opcion"><input type="radio" name="q44" value="c"> Cifrado local de datos.</label>
+        <label class="opcion"><input type="radio" name="q44" value="d"> Copia de seguridad interna.</label>
+      </div>
 
-    <!-- 45 -->
-    <div class="pregunta">
-      <p><strong>45. ¿Qué es un VPN?</strong></p>
-      <label class="opcion"><input type="radio" name="q45" value="a"> Un tipo de switch.</label>
-      <label class="opcion"><input type="radio" name="q45" value="b"> Red privada virtual que cifra el tráfico entre el cliente y la red.</label>
-      <label class="opcion"><input type="radio" name="q45" value="c"> Protocolo de correo.</label>
-      <label class="opcion"><input type="radio" name="q45" value="d"> Tipo de malware.</label>
-    </div>
+      <!-- 45 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 45</span>
+        <strong>¿Qué es un VPN?</strong>
+        <label class="opcion"><input type="radio" name="q45" value="a"> Un tipo de switch.</label>
+        <label class="opcion"><input type="radio" name="q45" value="b"> Red privada virtual que cifra el tráfico entre el cliente y la red.</label>
+        <label class="opcion"><input type="radio" name="q45" value="c"> Protocolo de correo.</label>
+        <label class="opcion"><input type="radio" name="q45" value="d"> Tipo de malware.</label>
+      </div>
 
-    <!-- 46 -->
-    <div class="pregunta">
-      <p><strong>46. ¿Qué significa “patch management”?</strong></p>
-      <label class="opcion"><input type="radio" name="q46" value="a"> Gestión de impresoras.</label>
-      <label class="opcion"><input type="radio" name="q46" value="b"> Proceso de aplicar y administrar actualizaciones de software.</label>
-      <label class="opcion"><input type="radio" name="q46" value="c"> Monitorizar redes inalámbricas.</label>
-      <label class="opcion"><input type="radio" name="q46" value="d"> Desactivar antivirus.</label>
-    </div>
+      <!-- 46 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 46</span>
+        <strong>¿Qué significa “patch management”?</strong>
+        <label class="opcion"><input type="radio" name="q46" value="a"> Gestión de impresoras.</label>
+        <label class="opcion"><input type="radio" name="q46" value="b"> Proceso de aplicar y administrar actualizaciones de software.</label>
+        <label class="opcion"><input type="radio" name="q46" value="c"> Monitorizar redes inalámbricas.</label>
+        <label class="opcion"><input type="radio" name="q46" value="d"> Desactivar antivirus.</label>
+      </div>
 
-    <!-- 47 -->
-    <div class="pregunta">
-      <p><strong>47. ¿Qué herramienta se usa para resolver nombres de dominio a direcciones IP?</strong></p>
-      <label class="opcion"><input type="radio" name="q47" value="a"> ping.</label>
-      <label class="opcion"><input type="radio" name="q47" value="b"> nslookup / dig.</label>
-      <label class="opcion"><input type="radio" name="q47" value="c"> ssh.</label>
-      <label class="opcion"><input type="radio" name="q47" value="d"> ftp.</label>
-    </div>
+      <!-- 47 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 47</span>
+        <strong>¿Qué herramienta se usa para resolver nombres de dominio a direcciones IP?</strong>
+        <label class="opcion"><input type="radio" name="q47" value="a"> ping.</label>
+        <label class="opcion"><input type="radio" name="q47" value="b"> nslookup / dig.</label>
+        <label class="opcion"><input type="radio" name="q47" value="c"> ssh.</label>
+        <label class="opcion"><input type="radio" name="q47" value="d"> ftp.</label>
+      </div>
 
-    <!-- 48 -->
-    <div class="pregunta">
-      <p><strong>48. ¿Qué es un “brute-force login attempt” en logs?</strong></p>
-      <label class="opcion"><input type="radio" name="q48" value="a"> Un solo intento de inicio de sesión exitoso.</label>
-      <label class="opcion"><input type="radio" name="q48" value="b"> Muchos intentos fallidos de inicio de sesión en poco tiempo.</label>
-      <label class="opcion"><input type="radio" name="q48" value="c"> Ningún intento de inicio de sesión.</label>
-      <label class="opcion"><input type="radio" name="q48" value="d"> Cambio de contraseña planificado.</label>
-    </div>
+      <!-- 48 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 48</span>
+        <strong>¿Qué es un “brute-force login attempt” en logs?</strong>
+        <label class="opcion"><input type="radio" name="q48" value="a"> Un solo intento de inicio de sesión exitoso.</label>
+        <label class="opcion"><input type="radio" name="q48" value="b"> Muchos intentos fallidos de inicio de sesión en poco tiempo.</label>
+        <label class="opcion"><input type="radio" name="q48" value="c"> Ningún intento de inicio de sesión.</label>
+        <label class="opcion"><input type="radio" name="q48" value="d"> Cambio de contraseña planificado.</label>
+      </div>
 
-    <!-- 49 -->
-    <div class="pregunta">
-      <p><strong>49. ¿Qué hace un NAC (Network Access Control)?</strong></p>
-      <label class="opcion"><input type="radio" name="q49" value="a"> Controla el acceso a la red según políticas de seguridad del dispositivo/usuario.</label>
-      <label class="opcion"><input type="radio" name="q49" value="b"> Cifra discos duros.</label>
-      <label class="opcion"><input type="radio" name="q49" value="c"> Gestiona impresoras.</label>
-      <label class="opcion"><input type="radio" name="q49" value="d"> Es un protocolo de enrutamiento.</label>
-    </div>
+      <!-- 49 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 49</span>
+        <strong>¿Qué hace un NAC (Network Access Control)?</strong>
+        <label class="opcion"><input type="radio" name="q49" value="a"> Controla el acceso a la red según políticas de seguridad del dispositivo/usuario.</label>
+        <label class="opcion"><input type="radio" name="q49" value="b"> Cifra discos duros.</label>
+        <label class="opcion"><input type="radio" name="q49" value="c"> Gestiona impresoras.</label>
+        <label class="opcion"><input type="radio" name="q49" value="d"> Es un protocolo de enrutamiento.</label>
+      </div>
 
-    <!-- 50 -->
-    <div class="pregunta">
-      <p><strong>50. ¿Cuál es un objetivo clave del monitoreo continuo en un SOC?</strong></p>
-      <label class="opcion"><input type="radio" name="q50" value="a"> Detectar y responder rápidamente a actividades anómalas.</label>
-      <label class="opcion"><input type="radio" name="q50" value="b"> Reducir el número de logs.</label>
-      <label class="opcion"><input type="radio" name="q50" value="c"> Desactivar alertas.</label>
-      <label class="opcion"><input type="radio" name="q50" value="d"> Apagar los sistemas por la noche.</label>
-    </div>
+      <!-- 50 -->
+      <div class="pregunta">
+        <span class="badge">Pregunta 50</span>
+        <strong>¿Cuál es un objetivo clave del monitoreo continuo en un SOC?</strong>
+        <label class="opcion"><input type="radio" name="q50" value="a"> Detectar y responder rápidamente a actividades anómalas.</label>
+        <label class="opcion"><input type="radio" name="q50" value="b"> Reducir el número de logs.</label>
+        <label class="opcion"><input type="radio" name="q50" value="c"> Desactivar alertas.</label>
+        <label class="opcion"><input type="radio" name="q50" value="d"> Apagar los sistemas por la noche.</label>
+      </div>
 
-    <button type="button" onclick="calificar()">Enviar examen</button>
-  </form>
+      <div class="actions">
+        <button type="button" class="btn btn-primary" onclick="calificar()">Enviar examen</button>
+        <button type="button" class="btn btn-secondary" onclick="borrarRespuestas()">Borrar respuestas</button>
+      </div>
+    </form>
 
-  <div id="resultado" style="display:none;"></div>
+    <div id="resultado"></div>
+  </div>
 
   <script>
     // Respuestas correctas (1 punto cada una)
@@ -523,6 +743,16 @@
         '<p>Preguntas correctas: <strong>' + correctas + '</strong></p>' +
         '<p>Preguntas incorrectas: <strong>' + incorrectas + '</strong></p>' +
         '<p>Puntaje total: <strong>' + puntaje + ' / ' + totalPreguntas + '</strong></p>';
+    }
+
+    function borrarRespuestas() {
+      const form = document.getElementById('quizForm');
+      const radios = form.querySelectorAll('input[type="radio"]');
+      radios.forEach(r => r.checked = false);
+
+      const resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.style.display = 'none';
+      resultadoDiv.innerHTML = '';
     }
   </script>
 </body>
