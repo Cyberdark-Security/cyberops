@@ -1,109 +1,58 @@
-# 🛡️ CyberOps — Simulador de Examen Cisco CyberOps
+# 🛡️ Simulador de Examen Cisco CyberOps
 
-Plataforma web de simulación de exámenes de ciberseguridad estilo Cisco CyberOps, desarrollada por **Cyberdark Security** como herramienta de entrenamiento para estudiantes de Latinoamérica.
+Plataforma profesional diseñada para simular el examen de certificación Cisco CyberOps Associate. Esta herramienta proporciona un entorno interactivo para que estudiantes de Latinoamérica practiquen y validen sus conocimientos en operaciones de ciberseguridad.
 
 🔗 **Demo en vivo:** [cyberops-lake.vercel.app](https://cyberops-lake.vercel.app/)
 
 ---
 
-## 📋 ¿Qué es?
+## 🎯 Propósito
 
-Simulador interactivo de 50 preguntas de opción múltiple que cubre los conceptos fundamentales del examen Cisco CyberOps Associate. Permite al estudiante practicar, autoevaluar su conocimiento y prepararse para la certificación.
-
----
-
-## 🧠 Temas que cubre
-
-| Área | Ejemplos de contenido |
-|------|-----------------------|
-| **Fundamentos SOC** | Roles, playbooks, monitoreo continuo |
-| **Modelo OSI** | Capas, protocolos por capa, TCP/UDP |
-| **Amenazas y ataques** | DoS/DDoS, phishing, ransomware, zero-day, APT |
-| **Herramientas** | Wireshark, SIEM, IDS/IPS, NGFW, honeypot |
-| **Respuesta a incidentes** | Contención, erradicación, forense digital |
-| **Hardening** | MFA, least privilege, need-to-know, segmentación |
-| **Análisis de red** | netstat, traceroute, nslookup, dig, syslog |
-| **Conceptos clave** | CIA, IOC, baseline, ACL, VPN, NAC, patch management |
+El objetivo principal de este repositorio es ofrecer una herramienta de entrenamiento realista y accesible para aquellos que se preparan para la certificación **200-201 CBROPS**. Se enfoca en reforzar los conceptos fundamentales de operaciones de seguridad, monitoreo y respuesta a incidentes.
 
 ---
 
-## ⚙️ Características
+## 🚀 Características Principales
 
-- ✅ 50 preguntas de opción múltiple
-- ✅ Cada pregunta vale 1 punto (total: 50 pts)
-- ✅ Resultado y puntaje al finalizar
-- ✅ Opción de borrar respuestas y reintentar
-- ✅ Interfaz ligera — sin instalación, corre en el navegador
-
----
-
-## 🚀 Stack Tecnológico
-
-| Capa | Tecnología |
-|------|-----------|
-| Frontend | HTML + CSS + JavaScript vanilla |
-| Despliegue | Vercel (serverless, deploy automático) |
-| Control de versiones | GitHub |
+*   **Banco de Preguntas Exhaustivo**: 50 preguntas de opción múltiple cuidadosamente seleccionadas.
+*   **Retroalimentación Instantánea**: Obtén tu puntaje y resumen de desempeño inmediatamente después de finalizar.
+*   **Interfaz Profesional**: Diseño limpio, profesional y responsivo para una experiencia de aprendizaje óptima.
+*   **Sin Instalación**: Ejecución directa en cualquier navegador web moderno.
 
 ---
 
-## 🗂️ Estructura del proyecto
+## 🧠 Áreas de Conocimiento Cubiertas
 
-```
-cyberops/
-├── index.html        # Aplicación completa (preguntas + lógica + estilos)
-└── README.md
-```
-
----
-
-## 💻 Correr localmente
-
-No requiere instalación ni dependencias:
-
-```bash
-git clone https://github.com/Cyberdark-Security/cyberops.git
-cd cyberops
-
-# Abrir directamente en el navegador
-open index.html
-# o en Linux:
-xdg-open index.html
-```
+| Área | Temas Clave |
+|------|------------|
+| **Fundamentos del SOC** | Roles, responsabilidades y flujos de trabajo operativos. |
+| **Conceptos de Red** | Modelo OSI, TCP/IP y protocolos seguros. |
+| **Análisis de Amenazas** | Tipos de malware, vectores de ataque y APTs. |
+| **Herramientas de Seguridad** | SIEM, IDS/IPS, Wireshark y Forense. |
+| **Respuesta a Incidentes** | Fases de contención, erradicación y recuperación. |
+| **Principios de Seguridad** | Tríada CIA, Principio de Mínimo Privilegio y Hardening. |
 
 ---
 
-## 🎯 ¿Para quién es?
+## 💻 Cómo Ejecutar
 
-- Estudiantes preparándose para **Cisco CyberOps Associate**
-- Participantes del programa **Cyberdark Security**
-- Cualquier persona que quiera autoevaluar sus conocimientos en ciberseguridad defensiva
+Al ser una aplicación web ligera, puedes ejecutarla localmente sin ninguna dependencia:
 
----
-
-## 🚀 Roadmap
-
-- [ ] Banco de preguntas ampliado (+200 preguntas)
-- [ ] Modo examen con temporizador
-- [ ] Preguntas aleatorias por sesión
-- [ ] Panel de resultados con análisis por tema
-- [ ] Autenticación de estudiantes
-- [ ] Panel docente para seguimiento de intentos
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone https://github.com/Cyberdark-Security/cyberops.git
+    ```
+2.  **Abrir la aplicación**:
+    Navega a la carpeta del proyecto y abre el archivo `index.html` en tu navegador web preferido.
 
 ---
 
-## 🏢 Sobre Cyberdark Security
+## ⚠️ Aviso Legal
 
-Proyecto de entrenamiento ofensivo y defensivo orientado a estudiantes de ciberseguridad en Latinoamérica.
-
----
-
-## ⚠️ Aviso legal
-
-Este simulador es de uso educativo. Las preguntas están basadas en conceptos públicos del examen Cisco CyberOps Associate. No garantiza resultados en el examen oficial.
+Este simulador tiene fines exclusivamente educativos. Aunque cubre conceptos esenciales para el examen Cisco CyberOps Associate, no garantiza el éxito en la certificación oficial.
 
 ---
 
 <div align="center">
-  Hecho con ❤️ por <strong>Cyberdark Security</strong> · para Latinoamérica
+  <h3>Hecho por Cyberdark by Whoami-labs.com</h3>
 </div>
